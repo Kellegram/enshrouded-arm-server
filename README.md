@@ -4,6 +4,8 @@ Run the Enshrouded dedicated server on an ARM64 Linux VPS (such as Oracle Cloud 
 
 There is no native Linux server build, so this runs the Windows `enshrouded_server.exe` through Wine, with x86-64 emulation handled by FEX emulation.
 
+A docker build coming soon, to allow doing this on any arm linux server. I want to test it first on a few of my servers.
+
 ## Tested on
 
 - Ubuntu 26.04 arm64
@@ -17,15 +19,17 @@ sudo apt update && sudo apt install -y curl unzip
 
 ## 2. Install Hangover
 
-Ubuntu 26.04:
+Below instructions are for Ubuntu 26.04
+On a different release, change the file name to match your Ubuntu version, for example `hangover_11.16_ubuntu2404_noble_arm64.tar` for 24.04. Builds for 22.04, 24.04, 25.10, 26.04 and Debian 12/13 are listed on the [Hangover releases](https://github.com/AndreRH/hangover/releases) page. 
+For a newer Hangover version, change `11.16` in both the tag and the file name.
 
 ```bash
+mkdir -p ~/hangover && cd ~/hangover
 curl -LO https://github.com/AndreRH/hangover/releases/download/hangover-11.16/hangover_11.16_ubuntu2604_resolute_arm64.tar
-tar -xf hangover_11.16_ubuntu2604_resolute_arm64.tar
-sudo apt install -y ./hangover*.deb
+tar xf hangover_11.16_ubuntu2604_resolute_arm64.tar
+sudo apt install -y ./*.deb
 ```
-
-On a different release, change the file name to match your Ubuntu version, for example `hangover_11.16_ubuntu2404_noble_arm64.tar` for 24.04. Builds for 22.04, 24.04, 25.10, 26.04 and Debian 12/13 are listed on the [Hangover releases](https://github.com/AndreRH/hangover/releases) page. For a newer Hangover version, change `11.16` in both the tag and the file name.
+**Important note:** If you accidentally downloaded the wrong release, delete any files you unpacked first before running the install command or you will end up with a wall of unmet dependencies. This is why we are doing it in its own folder, you can easily delete it and do it again.
 
 ## 3. Download the server files
 
