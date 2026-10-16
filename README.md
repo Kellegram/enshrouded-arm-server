@@ -8,7 +8,8 @@ A docker build coming soon, to allow doing this on any arm linux server. I want 
 
 ## Tested on
 
-- Ubuntu 26.04 arm64
+- Ubuntu 26.04 arm64 (Oracle free tier)
+- Ubuntu 24.04 arm64 (Oracle free tier)
 - Memory use was about 1.5 GB with one idle player at the very start of the game, long-term not yet tested
 
 ## 1. Packages
