@@ -125,3 +125,6 @@ Pressing Ctrl+C when running in a foreground shell shuts the server down cleanly
 
 - Back up `~/enshrouded/savegame/` before updating the server or changing versions.
 - Only Oracle Ubuntu ARM install has been verified. If this changes I will update the README, but for the time being more testing is required.
+
+## Attribution
+I am not associated with Keen Games (the developer) or Enshrouded the game in any way. These are not official instructions and running the dedicated server on Linux is not officially supported. 
