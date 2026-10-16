@@ -1,0 +1,13 @@
+services:
+  enshrouded:
+    build: .
+    image: enshrouded-arm
+    container_name: enshrouded
+    restart: unless-stopped
+    ports:
+      - "15637:15637/udp"
+    environment:
+      UPDATE_ON_START: "true"
+    volumes:
+      - ${HOME}/enshrouded-arm:/data
+    stop_grace_period: 30s
