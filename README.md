@@ -4,9 +4,8 @@ Run the Enshrouded dedicated server on an ARM64 Linux server (such as the Oracle
 
 There is no native Linux server build, so this runs the Windows `enshrouded_server.exe` through Wine, with the x86-64 code emulated.
 
-## Contents
+## Table of Contents
 
-- [Tested on](#tested-on)
 - [Install](#install)
   - [Method A: bare metal with systemd](#method-a-bare-metal-with-systemd)
   - [Method B: bare metal in the foreground or background (no systemd)](#method-b-bare-metal-in-the-foreground-or-background-no-systemd)
