@@ -12,6 +12,7 @@ There is no native Linux server build, so this runs the Windows `enshrouded_serv
   - [Method C: Docker](#method-c-docker)
 - [Configuration](#configuration)
 - [Updating](#updating)
+- [Performance](#performance)
 - [Known issues](#known-issues)
 - [Notes](#notes)
 - [Attribution](#attribution)
@@ -243,6 +244,30 @@ Stop the server, back up `savegame/`, then download the files again with the sam
 
 - **Bare metal:** `sudo systemctl stop enshrouded` (or stop your foreground process), then `~/dd/DepotDownloader -app 2278520 -os windows -dir ~/enshrouded`, then start it again.
 - **Docker:** with `UPDATE_ON_START` set to `true`, run `docker compose restart`.
+
+## Performance
+
+### Enable ntsync (Methods A and B)
+
+Wine can use the kernel's `ntsync` driver (kernel 6.14 or newer) for synchronisation instead of routing it through `wineserver`.
+
+First, verify that your server supports ntsync
+```bash
+sudo modprobe ntsync
+ls -l /dev/ntsync
+```
+You should see the directory as output. If you get an error, your kernel might not have ntsync support. There are guides online on how to verify this.
+
+The command below will persist the loading of the module on reboots:
+```bash
+echo ntsync | sudo tee /etc/modules-load.d/ntsync.conf
+```
+
+To confirm, this should list `ntsync` entries after rebooting the server (and while the game server is running):
+
+```bash
+sudo ls -l /proc/$(pgrep -x wineserver | head -1)/fd | grep ntsync
+```
 
 ## Known issues
 
